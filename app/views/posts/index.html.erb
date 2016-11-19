@@ -1,9 +1,8 @@
 <h1>Makersgram</h1>
 
-<ul class="posts">
-  <% @posts.each do |post| %>
-    <li>
-    <%= @post.caption %>
-    </li>
-  <% end %>
-</ul>
+<% @posts.each do |post| %>
+  <div class="posts">
+    <p><%= image_tag post.image.url(:medium)%></p>
+    <p><%= post.caption %></p>
+  </div>
+<% end %>
