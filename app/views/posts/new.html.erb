@@ -1,0 +1,7 @@
+<h1>Upload a new photo</h1>
+
+<%= simple_form_for @post, url: new_post_path do |form| %>
+  <%= form.input :image, as: :file %>
+  <%= form.input :caption, placeholder: "Add image caption here" %>
+  <%= form.button :submit, value: "Add Picture" %>
+<% end %>
