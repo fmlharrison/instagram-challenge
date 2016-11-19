@@ -1,0 +1,21 @@
+<p id="image"><%= image_tag @post.image.url(:medium) %></p>
+<p id="caption"><%= @post.caption %></p>
+
+<div id="comments" >
+  <h2>Comments</h2>
+  <% @post.comments.each do |comment| %>
+    <p>
+    <strong>Comment:</strong>
+    <%= comment.comment %>
+    </p>
+  <% end %>
+</div>
+
+<p id="comment_form">
+  <%= simple_form_for ([@post, @post.comments.build]) do |c| %>
+    <%= c.input :comment, :as => :text, required: true %>
+    <%= c.button :submit, value: "Add Comment" %>
+  <% end %>
+</p>
+
+<p id="back"><%= link_to "Back", posts_path %></p>

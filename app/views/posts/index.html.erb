@@ -2,7 +2,7 @@
 
 <% @posts.each do |post| %>
   <div class="posts">
-    <p><%= image_tag post.image.url(:medium)%></p>
+    <p><%= link_to (image_tag post.image.url(:medium), class: "img-responsive"), post_path(post)%></p>
     <p><%= post.caption %></p>
   </div>
 <% end %>

@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
+  has_many :comments
+
   has_attached_file :image
 
   validates_presence_of :image
