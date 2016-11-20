@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
 
   def new
@@ -10,11 +10,23 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to posts_path
+    if @post.save
+      flash[:success] = "Your post was successful"
+      redirect_to posts_path
+    else
+      flash[:alert] = "You need to upload a photo first!"
+      render :new
+    end
   end
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
 
   private

@@ -7,6 +7,14 @@ def adding_post
   click_button 'Add Picture'
 end
 
+def add_post_no_photo
+  visit '/'
+  click_link 'Menu'
+  click_link 'New Post'
+  fill_in "Caption", with: "Ha ha, no photo!"
+  click_button 'Add Picture'
+end
+
 def adding_comment
   find(:xpath, "//a[@href='/posts/1']").click
   fill_in "Comment", with: "You look like a dork!"
