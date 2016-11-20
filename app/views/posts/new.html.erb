@@ -1,7 +1,15 @@
 <h1>Upload a new photo</h1>
 
-<%= simple_form_for @post do |form| %>
-  <%= form.input :image, as: :file %>
-  <%= form.input :caption, placeholder: "Add image caption here" %>
-  <%= form.button :submit, value: "Add Picture" %>
-<% end %>
+<div class="form-wrapper" >
+  <%= simple_form_for @post, html: {class: 'form-horizontal', multipart: true} do |form| %>
+    <div class="form-group">
+      <%= form.input :image, as: :file %>
+    </div>
+    <div class="form-group text-center">
+      <%= form.input :caption, placeholder: "Add image caption here" %>
+    </div>
+    <div class="form-group text-center">
+      <%= form.button :submit, class: "btn-sucess", value: "Add Picture" %>
+    </div>
+  <% end %>
+</div>
