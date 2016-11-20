@@ -1,9 +1,10 @@
 <div class="posts-wrapper row">
   <% @posts.each do |post| %>
     <div class="post">
-      <div class="post-head">
+      <div class="post-head row">
         <div class="name">
-          User Name
+          <span class="col-md-6"><%= post.user.user_name %></span>
+          <span class="col-md-6 text-right"><%= time_ago_in_words((post.image_updated_at), locale: :en_abbrev) %></span>
         </div>
       </div>
       <div class="image center-block">
