@@ -9,15 +9,17 @@
       <%= image_tag @post.image.url(:medium) %>
     </div>
     <p class="caption"><%= @post.caption %></p>
-    <hr>
-    <div class="comments" >
-      <% @post.comments.each do |comment| %>
-        <p>
-        <strong>Comment:</strong>
-        <%= comment.comment %>
-        </p>
-      <% end %>
-    </div>
+    <% if @post.comments.count != 0 %>
+      <hr>
+      <div class="comments" >
+        <% @post.comments.each do |comment| %>
+          <p>
+          <strong>Comment:</strong>
+          <%= comment.comment %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
     <hr>
       <%= simple_form_for ([@post, @post.comments.build]), html: {class: 'form-horizontal', multipart: true} do |c| %>
         <div class="form-group text-center">

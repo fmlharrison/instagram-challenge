@@ -20,3 +20,8 @@ def adding_comment
   fill_in "Comment", with: "You look like a dork!"
   click_button "Add Comment"
 end
+
+def add_empty_comment
+  find(:xpath, "//a[@href='/posts/1']").click
+  click_button "Add Comment"
+end
