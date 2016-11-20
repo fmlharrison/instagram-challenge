@@ -10,10 +10,15 @@
       <%= image_tag @post.image.url(:medium) %>
     </div>
     <div class="post-bottom row">
-      <div class="like-button col-sm-1">
-        <span class="glyphicon glyphicon-heart-empty"></span>
+      <div class="like-button col-sm-2">
+        <%= link_to post_likes_path(@post), method: :create do %>
+          <span class="glyphicon glyphicon-heart-empty"></span>
+          <% if @post.likes.count > 0 %>
+            <span><%= @post.likes.count %></span>
+          <% end %>
+        <% end %>
       </div>
-      <div class="caption col-sm-11">
+      <div class="caption col-sm-10">
         <span class="user-name"><strong ><%= @post.user.user_name %></strong>: </span>
         <%= @post.caption %>
       </div>
@@ -22,6 +27,7 @@
     <hr>
         <div class="comment" >
           <% @post.comments.each do |comment| %>
+            <p>
             <span class="user-name"><strong><%= comment.user.user_name %>: </strong></span>
             <%= comment.comment %>
             <% if current_user == comment.user %>
@@ -29,6 +35,7 @@
                 <span class="glyphicon glyphicon-remove delete-comment"></span>
               <% end %>
             <% end %>
+            </p>
           <% end %>
       </div>
       <% end %>
