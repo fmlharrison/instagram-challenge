@@ -2,7 +2,7 @@
   <% @posts.each do |post| %>
     <div class="post">
       <div class="post-head row">
-        <div class="name">
+        <div class="user-name">
           <span class="col-md-6"><%= post.user.user_name %></span>
           <span class="col-md-6 text-right"><%= time_ago_in_words((post.image_updated_at), locale: :en_abbrev) %></span>
         </div>
@@ -10,7 +10,14 @@
       <div class="image center-block">
         <%= link_to (image_tag post.image.url(:medium), class: "img-responsive"), post_path(post)%>
       </div>
-      <p class="caption"><%= post.caption %></p>
+      <div class="post-bottom row">
+        <div class="like-button col-sm-1">
+          <span class="glyphicon glyphicon-heart-empty"></span>
+        </div>
+        <div class="caption col-sm-11">
+          <span class="user-name"><strong ><%= post.user.user_name %></strong>: <%= post.caption %></span>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

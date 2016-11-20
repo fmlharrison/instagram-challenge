@@ -1,7 +1,7 @@
 <div class="posts-wrapper row">
   <div class="post">
     <div class="post-head">
-      <div class="name" >
+      <div class="user-name" >
         <span class="col-md-6"><%= @post.user.user_name %></span>
         <span class="col-md-6 text-right"><%= time_ago_in_words((@post.image_updated_at), locale: :en_abbrev) %></span>
       </div>
@@ -9,28 +9,51 @@
     <div class="image center-block">
       <%= image_tag @post.image.url(:medium) %>
     </div>
-    <p class="caption"><%= @post.caption %></p>
-    <% if @post.comments.count != 0 %>
-      <hr>
-      <div class="comments" >
-        <% @post.comments.each do |comment| %>
-          <p>
-          <strong>Comment:</strong>
-          <%= comment.comment %>
-          </p>
+    <div class="post-bottom row">
+      <div class="like-button col-sm-1">
+        <span class="glyphicon glyphicon-heart-empty"></span>
+      </div>
+      <div class="caption col-sm-11">
+        <span class="user-name"><strong ><%= @post.user.user_name %></strong>: </span>
+        <%= @post.caption %>
+      </div>
+    <hr>
+      <% if @post.comments.count != 0 %>
+    <hr>
+        <div class="comment" >
+          <% @post.comments.each do |comment| %>
+            <span class="user-name"><strong><%= comment.user.user_name %>: </strong></span>
+            <%= comment.comment %>
+            <% if current_user == comment.user %>
+              <%= link_to post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?"} do %>
+                <span class="glyphicon glyphicon-remove delete-comment"></span>
+              <% end %>
+            <% end %>
+          <% end %>
+      </div>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <div class="comment-like-form row">
+      <div class="comment-form col-sm-12">
+        <% if user_signed_in? %>
+          <%= simple_form_for ([@post, @post.comments.build]), html: {class: 'form-horizontal', multipart: true} do |c| %>
+            <div class="form-group text-center">
+              <%= c.input :comment, :as => :text, required: true %>
+            </div>
+            <div class="form-group text-center">
+              <%= c.button :submit, value: "Add Comment" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="caption">Log in to leave a comment</p>
         <% end %>
       </div>
-    <% end %>
-    <hr>
-      <%= simple_form_for ([@post, @post.comments.build]), html: {class: 'form-horizontal', multipart: true} do |c| %>
-        <div class="form-group text-center">
-          <%= c.input :comment, :as => :text, required: true %>
-        </div>
-        <div class="form-group text-center">
-          <%= c.button :submit, value: "Add Comment" %>
-        </div>
-      <% end %>
+    </div>
   </div>
+</div>
 
 
 <p class="text-center edit-links">
