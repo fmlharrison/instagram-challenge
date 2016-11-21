@@ -117,6 +117,7 @@ h1 {
   line-height: 18px;
   width: 100%;
   color: #4B4F54;
+  outline: none;
 }
 
 .comment-like-form {
@@ -128,6 +129,10 @@ h1 {
   align-items: center;
   flex-direction: row;
   justify-content: center;
+}
+
+.comment_content:hover {
+  border: 2px #b3e6ff solid;
 }
 
 /* ## Wrapper and styling for the new and edit views ## */
@@ -144,6 +149,9 @@ h1 {
 .edit-links {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+.like-button {
+  color: #337ab7;
 }
 //
 // body {

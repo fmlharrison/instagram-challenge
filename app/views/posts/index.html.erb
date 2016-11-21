@@ -12,10 +12,17 @@
       </div>
       <div class="post-bottom row">
         <div class="like-button col-sm-2">
-          <%= link_to post_likes_path(post), method: :create do %>
-            <span class="glyphicon glyphicon-heart-empty"></span>
+          <% if current_user.has_liked?(post) %>
+            <span class="glyphicon glyphicon-heart"></span>
             <% if post.likes.count > 0 %>
               <span><%= post.likes.count %></span>
+            <% end %>
+          <% else %>
+            <%= link_to post_likes_path(post), method: :create do %>
+              <span class="glyphicon glyphicon-heart-empty"></span>
+              <% if post.likes.count > 0 %>
+                <span><%= post.likes.count %></span>
+              <% end %>
             <% end %>
           <% end %>
         </div>

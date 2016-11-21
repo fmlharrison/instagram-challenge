@@ -11,10 +11,17 @@
     </div>
     <div class="post-bottom row">
       <div class="like-button col-sm-2">
-        <%= link_to post_likes_path(@post), method: :create do %>
-          <span class="glyphicon glyphicon-heart-empty"></span>
+        <% if current_user.has_liked?(@post) %>
+          <span class="glyphicon glyphicon-heart"></span>
           <% if @post.likes.count > 0 %>
             <span><%= @post.likes.count %></span>
+          <% end %>
+        <% else %>
+          <%= link_to post_likes_path(@post), method: :create do %>
+            <span class="glyphicon glyphicon-heart-empty"></span>
+            <% if @post.likes.count > 0 %>
+              <span><%= @post.likes.count %></span>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -47,8 +54,8 @@
       <div class="comment-form col-sm-12">
         <% if user_signed_in? %>
           <%= simple_form_for ([@post, @post.comments.build]), html: {class: 'form-horizontal', multipart: true} do |c| %>
-            <div class="form-group text-center">
-              <%= c.input :comment, :as => :text, required: true %>
+            <div class="form-group text-center" style="resize: none; height: 1em; width: 100%; margin: 0 auto; margin-bottom: 20px;">
+              <%= c.text_field :comment, :as => :text, required: true, placeholder: "Add comment...", class: "comment_content" %>
             </div>
             <div class="form-group text-center">
               <%= c.button :submit, value: "Add Comment" %>
