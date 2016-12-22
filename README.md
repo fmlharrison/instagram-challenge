@@ -2,98 +2,36 @@
 
 ##Task
 
-Build Instagram: Simple huh!
+To build a clone of Instagram using Ruby on Rails.
 
-###User Stories:
-MVP
+###Technology Used
+
+Ruby Version: 2.3.0
+
+Database: Sqlite3
+
+ORM: Active Record
+
+CSS and HTML5
+
+###Features
+
+A user can sign up to Makersgram and post a picture with a description. This post will then be visible to all other users who have the opportunity to comment on and like that post. The name of the post owner and how long ago the photo was posted is displayed with each post.  
+The owner of a post has the power to edit or delete the post.  
+The owner of a comment is able to delete that comment.
+
+###How to use
+
 ```
-As a User
-So everyone can see my beautiful photos
-I want to be able to upload photos to the suite
-
-As a User
-So I can tell other users about my photos
-I want to be able to add a caption to each of my photos
-
-As a User
-So I can tell other users how much I like their photos
-I want to be able to comment of other's photos
-
-As a User
-So I can tell other users that I think their photos are great
-I want to be able to 'LIKE' photos
+git clone https://github.com/fmlharrison/instagram-challenge
+cd instagram-challenge
+rake db:setup
+rails server
 ```
+Then go to localhost:3000 and enjoy.
 
-MLP
+###How to test  
+Once cloned use:
 ```
-As a User
-So I can use all the functionality of the app
-I want to be able to sign up
-
-As a User
-So I can use the app more than once
-I want to be able to sign in
-
-As a User
-So I can make sure that only I can manage my photos and comments
-I want to be able to sign out when I am done using the app
-
-As a User
-So other users know that it was I who took that photo
-I want to see when user name attached to my photos
-
-As a User
-So I know who has uploaded photos
-I want to be able to see a user name attached to each photo
-
-As a User
-So I know who has liked and commented on my photos
-I want a user names to be attached to comments and likes
+rspec
 ```
-
-MSP
-```
-As a User
-So I can easily sign up and log in
-I want to be able to log in with FaceBook
-
-As a User
-So I can easily sign up and log in
-I want to be able to log in with Twitter
-
-As a User
-So I know where each photo was taken
-I want to be able to add a location tag to each photo
-```
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to initialize a Rails app in the current directory.
-
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-
-###README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
