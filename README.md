@@ -2,7 +2,7 @@
 
 ##Task
 
-Build Instagram: Simple huh!
+Build a clone of Instagram
 
 ###User Stories:
 MVP
@@ -65,15 +65,6 @@ As a User
 So I know where each photo was taken
 I want to be able to add a location tag to each photo
 ```
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to initialize a Rails app in the current directory.
-
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-
-###README
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
